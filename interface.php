@@ -8,7 +8,7 @@ interface InfoProduk{
 }
 
 
-class Produk {
+abstract class Produk {
     //private = hanya class(parent)
     //protected = parent dan child bisa memanggil propeerty tsb   
     private  $judul,
@@ -42,14 +42,12 @@ class Produk {
     public function getHarga(){
         return $this->harga - ($this->harga*$this->diskon/100);
     }
-    
-    public function getInfo(){
-        return "{$this->judul} | {$this->getLabel()} (RP.{$this->harga})";
-    }
 
     public function setDiskon($diskon = 0){
         $this->diskon = $diskon;
     }
+
+    abstract public function getInfo();
 }
 
 class Komik extends Produk implements InfoProduk{
